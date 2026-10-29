@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mouse Mayhem</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ============ MAIN MENU ============ -->
+  <section id="menu-screen" class="screen active">
+    <div class="menu-box">
+      <h1 class="title">MOUSE<span>MAYHEM</span></h1>
+      <p class="subtitle">Duel with your cursor. 100 HP. No mercy.</p>
+
+      <div class="field">
+        <label for="player-name">Your name</label>
+        <input id="player-name" type="text" maxlength="14" placeholder="Enter a name" />
+      </div>
+
+      <div class="field">
+        <label for="room-code">Room code</label>
+        <input id="room-code" type="text" maxlength="6" placeholder="e.g. 7G3K2P" autocomplete="off" />
+      </div>
+
+      <div class="button-row">
+        <button id="create-room-btn" class="btn btn-primary">Create Room</button>
+        <button id="join-room-btn" class="btn btn-secondary">Join Room</button>
+      </div>
+
+      <p id="menu-status" class="status-line">Not connected</p>
+      <p id="menu-error" class="error-line"></p>
+    </div>
+  </section>
+
+  <!-- ============ WAITING ROOM ============ -->
+  <section id="waiting-screen" class="screen">
+    <div class="menu-box">
+      <h2>Room <span id="waiting-room-code">------</span></h2>
+      <p class="subtitle">Share this code with your opponent.</p>
+      <p id="waiting-status" class="status-line">Waiting for opponent to join…</p>
+      <button id="cancel-waiting-btn" class="btn btn-secondary">Cancel</button>
+    </div>
+  </section>
+
+  <!-- ============ ARENA ============ -->
+  <section id="arena-screen" class="screen">
+    <div id="hud">
+      <div class="hp-block" id="hp-block-me">
+        <span class="hp-name" id="hp-name-me">You</span>
+        <div class="hp-bar"><div class="hp-fill" id="hp-fill-me"></div></div>
+      </div>
+      <div id="connection-indicator">
+        <span id="conn-dot" class="dot"></span>
+        <span id="conn-text">connecting…</span>
+      </div>
+      <div class="hp-block" id="hp-block-opp">
+        <span class="hp-name" id="hp-name-opp">Opponent</span>
+        <div class="hp-bar"><div class="hp-fill" id="hp-fill-opp"></div></div>
+      </div>
+    </div>
+
+    <div id="arena">
+      <div id="cursor-me" class="cursor cursor-blue">
+        <div class="cursor-dot"></div>
+        <span class="cursor-label"></span>
+      </div>
+      <div id="cursor-opp" class="cursor cursor-orange" style="display:none;">
+        <div class="cursor-dot"></div>
+        <span class="cursor-label"></span>
+      </div>
+    </div>
+
+    <p id="arena-hint">Click anywhere to fire. Dodge by moving.</p>
+  </section>
+
+  <!-- ============ VICTORY SCREEN ============ -->
+  <section id="victory-screen" class="screen">
+    <div class="menu-box">
+      <h1 id="victory-title">VICTORY</h1>
+      <p id="victory-sub" class="subtitle"></p>
+      <button id="play-again-btn" class="btn btn-primary">Back to Menu</button>
+    </div>
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script src="js/supabaseClient.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/game.js"></script>
+</body>
+</html>
